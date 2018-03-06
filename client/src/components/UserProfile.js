@@ -21,7 +21,7 @@ class UserProfile extends Component{
     deleteUser(evt){
         evt.preventDefault()
         console.log('user deleted!')
-        alert("Bye! See you soon!")
+        alert("Deleting your account 😥... Come back soon!")
         const fields = {
             name: this.refs.editName.value,
             email: this.refs.editEmail.value
