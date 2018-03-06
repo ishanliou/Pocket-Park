@@ -19,7 +19,7 @@ li{
   opacity: 1;  
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 750px) {
   .centerText{ 
     position: absolute;
     top:33%;
