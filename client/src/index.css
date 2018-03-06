@@ -19,6 +19,16 @@ li{
   opacity: 1;  
 }
 
+@media screen and (max-width: 375px) {
+  .centerText{ 
+    position: absolute;
+    top:33%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+  }
+}
+
 .credit{
   margin: 36px 0px 0px 0px;
   color:rgba(43, 43, 43, 0.646);
