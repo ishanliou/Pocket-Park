@@ -51,7 +51,7 @@ class ParksDetails extends Component {
             <br/>
             <h4 className="park-details-sub">{this.state.park.description}</h4>
             <div className="line"></div>
-            <a href={this.state.park.url}><div className="park-link" >Visit {this.state.park.fullName}</div></a>
+            <a href={this.state.park.url}><div className="park-link" target="_blank">Visit {this.state.park.fullName}</div></a>
             
 
             <img style={{width:'100%', height:'auto'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
