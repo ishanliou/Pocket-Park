@@ -21,6 +21,7 @@ class UserProfile extends Component{
     deleteUser(evt){
         evt.preventDefault()
         console.log('user deleted!')
+        alert("Bye! See you soon!")
         const fields = {
             name: this.refs.editName.value,
             email: this.refs.editEmail.value
@@ -54,7 +55,7 @@ class UserProfile extends Component{
                     <div className="line">
                         <div className="line-label">or</div>
                     </div>
-
+        
                 <button className="btn-delete" onClick={this.deleteUser.bind(this)}>Delete My Account</button>
            </div>
        )
