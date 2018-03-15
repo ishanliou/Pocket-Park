@@ -1,6 +1,7 @@
 # Pocket Parks
 
 --
+![Screenshot of index](./pocket-parks-img.png)
 ### Brief Description
 
 A pocket parks app where you can browse all the National Parks informations and add your comments.
