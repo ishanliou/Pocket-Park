@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import clientAuth from '../clientAuth.js';
+import Map from './Map.js'
 
 class ParksDetails extends Component {
     state = { 
@@ -55,6 +56,7 @@ class ParksDetails extends Component {
             
 
             <img style={{width:'100%', height:'auto'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
+            <Map />
             <form className="form-comment" onSubmit={this.addComment.bind(this)}>
                 <textarea ref="comment" type="text" rows="3" placeholder="add your comment" ></textarea><br />
                 <button className="btn-submit">Add your comment</button>
