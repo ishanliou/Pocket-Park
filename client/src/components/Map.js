@@ -4,7 +4,7 @@ class Map extends Component {
     render() {
         return(
             <div>
-                <h1>gooGle MaP</h1>
+                <h1>Google Map here</h1>
             </div>
         )
     }
