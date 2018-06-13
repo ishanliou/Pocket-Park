@@ -7,6 +7,7 @@ class ParksDetails extends Component {
     state = { 
         park: null,
         parkComments: [],
+        parkName: null,
         loca: null
     }
 
@@ -17,8 +18,8 @@ class ParksDetails extends Component {
                 this.setState({
                     park: res.data.data[0], //only one arry we are getting
                     parkComments: res.data.parkComments, //get parkComment 
-                    parkname: res.data.data[0].fullName,
-                    loca: res.data.data[0].latLong.replace("lat:","").replace("long:","")
+                    parkName: res.data.data[0].fullName,
+                    loca: res.data.data[0].latLong.replace("lat:","").replace("long:","") //get the laittude and longtide
                 })
             })
     }
@@ -43,9 +44,9 @@ class ParksDetails extends Component {
 
     render() {
 
-        let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
-                   &q=${this.state.parkname}
-                   &zoom=11`
+        // let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
+        //            &q=${this.state.parkname}
+        //            &zoom=11`
 
         if(!this.state.park) 
         return <div className="loader"><img src={`/images/tree.png`} className="App-logo" alt="logo" /><h3 className="park-details" >Loading...
@@ -53,38 +54,45 @@ class ParksDetails extends Component {
                 </h3></div>
             return(
                 <div>
-                <h1 className="park-details">{this.state.park.fullName} | {this.state.park.states}</h1>
-                <h3 className="park-details">-Description-</h3>
-                <br/>
-                <h4 className="park-details-sub">{this.state.park.description}</h4>
-                <div className="line"></div>
-                <a href={this.state.park.url}><div className="park-link" target="_blank">Visit {this.state.park.fullName}</div></a>
-                
+                    <h1 className="park-details">
+                        {this.state.park.fullName} | {this.state.park.states}
+                    </h1>
+                    <h3 className="park-details">
+                        -Description-
+                    </h3>
+                    <br/>
 
-                <img style={{width:'70%', height:'auto'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
-                
-                <Map />
+                    <h4 className="park-details-sub">
+                        {this.state.park.description}
+                    </h4>
+                    <div className="line"></div>
+                    <a href={this.state.park.url}>
+                        <div className="park-link" target="_blank">Visit {this.state.park.fullName}</div>
+                    </a>
+                    
+                    <img style={{width:'70%', height:'auto', marginBottom:'48px'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
+                    <br/>
 
-                <iframe className="iframe"
-                        width="600"
-                        height="450"
-                        frameBorder="0" style={{border:0}}
-                        src={url}
-                        title="map"
-                        allowFullScreen>
-                    </iframe>
+                    <div className="line"></div>
 
+                    {/* Google Map */}
+                    <h3 className="map-details">
+                        -Google Map-
+                    </h3>
+                    <Map googleMap={this.state.parkName}/>
 
-                <form className="form-comment" onSubmit={this.addComment.bind(this)}>
-                    <textarea ref="comment" type="text" rows="3" placeholder="add your comment" ></textarea><br />
-                    <button className="btn-submit">Add your comment</button>
-                </form>
-                
-                <h3 className="park-details-comment">{this.state.parkComments.map((c, i) =>{
-                    return <div key={i}>{c.body} <h4>-{c.by.name} </h4><hr/></div>
-                })}</h3>
+                    {/* Comment Field */}
+                    <form className="form-comment" onSubmit={this.addComment.bind(this)}>
+                        <textarea ref="comment" type="text" rows="3" placeholder="add your comment" ></textarea><br />
+                        <button className="btn-submit">Add your comment</button>
+                    </form>
+
+                    {/* Comment Disply */}
+                    <h3 className="park-details-comment">{this.state.parkComments.map((c, i) =>{
+                        return <div key={i}>{c.body} <h4>-{c.by.name} </h4><hr/></div>})}
+                    </h3>
             
-            </div>
+                </div>
         )
     }
 }

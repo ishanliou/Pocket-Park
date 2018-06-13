@@ -251,3 +251,9 @@ a:active {
   background: #000;
   height: 48px;
 }
+
+/* Google Map  */
+.map-details{
+  color: rgba(34, 31, 31, 0.785);
+  margin: 48px 0px 48px 0px;
+}
