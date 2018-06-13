@@ -17,7 +17,8 @@ class ParksDetails extends Component {
                 this.setState({
                     park: res.data.data[0], //only one arry we are getting
                     parkComments: res.data.parkComments, //get parkComment 
-                    loca: res.data.data[0].latLong.replace("lat:","").replace("long:","")
+                    loca: res.data.data[0].latLong.replace("lat:","").replace("long:",""),
+                    fullname: res.data.data[0].fullName
                 })
             })
     }
@@ -41,10 +42,10 @@ class ParksDetails extends Component {
     }
 
     render() {
-        // let loca = this.state.park.latLong.replace("lat:","").replace("long:","")
-        let 
-            url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
-            &q=${this.state.loca}`
+
+        let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
+                   &q=${this.state.fullname}
+                   &zoom=11`
 
         if(!this.state.park) 
         return <div className="loader"><img src={`/images/tree.png`} className="App-logo" alt="logo" /><h3 className="park-details" >Loading...
@@ -61,6 +62,7 @@ class ParksDetails extends Component {
             
 
             <img style={{width:'100%', height:'auto'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
+            
             <Map />
             {/* <div>{this.state.park.latLong.replace("lat:","").replace("long:","")}</div> */}
 
