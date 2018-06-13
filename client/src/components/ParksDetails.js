@@ -6,7 +6,8 @@ import Map from './Map.js'
 class ParksDetails extends Component {
     state = { 
         park: null,
-        parkComments: []
+        parkComments: [],
+        loca: null
     }
 
     componentDidMount = () => {
@@ -15,8 +16,8 @@ class ParksDetails extends Component {
                 console.log(res)
                 this.setState({
                     park: res.data.data[0], //only one arry we are getting
-                    parkComments: res.data.parkComments //get parkComment 
-                
+                    parkComments: res.data.parkComments, //get parkComment 
+                    loca: res.data.data[0].latLong.replace("lat:","").replace("long:","")
                 })
             })
     }
@@ -40,7 +41,11 @@ class ParksDetails extends Component {
     }
 
     render() {
-        
+        // let loca = this.state.park.latLong.replace("lat:","").replace("long:","")
+        let 
+            url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
+            &q=${this.state.loca}`
+
         if(!this.state.park) 
         return <div className="loader"><img src={`/images/tree.png`} className="App-logo" alt="logo" /><h3 className="park-details" >Loading...
                     
@@ -57,6 +62,18 @@ class ParksDetails extends Component {
 
             <img style={{width:'100%', height:'auto'}} alt={this.state.park.name} src={`/images/${this.state.park.parkCode}.jpg`}/>
             <Map />
+            {/* <div>{this.state.park.latLong.replace("lat:","").replace("long:","")}</div> */}
+
+            <iframe className="iframe"
+                    width="600"
+                    height="450"
+                    frameBorder="0" style={{border:0}}
+                    src={url}
+                    title="map"
+                    allowFullScreen>
+                </iframe>
+
+
             <form className="form-comment" onSubmit={this.addComment.bind(this)}>
                 <textarea ref="comment" type="text" rows="3" placeholder="add your comment" ></textarea><br />
                 <button className="btn-submit">Add your comment</button>
