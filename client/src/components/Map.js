@@ -12,9 +12,9 @@ class Map extends Component {
         return(
             <div>
                 <iframe className="iframe"
-                        width="600"
+                        width="70%"
                         height="450"
-                        frameBorder="0" style={{border:"0"}}
+                        frameBorder="0" style={{border:"0", marginBottom:"48px"}}
                         src={url}
                         title="map"
                         allowFullScreen>
