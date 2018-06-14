@@ -5,7 +5,7 @@ class Map extends Component {
     render() {
         let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
                    &q=${this.props.googleMap}
-                   &zoom=11`
+                   &zoom=7`
     
         return(
             <div>
