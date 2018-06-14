@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
 class Map extends Component {
-    constructor(props) {
-        super(props);
-    }
+    
     render() {
         let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
                    &q=${this.props.googleMap}
