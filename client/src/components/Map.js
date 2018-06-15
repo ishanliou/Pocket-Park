@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-const 
-      dotenv = require('dotenv').load(),
+const
       GMAP_API = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 
 class Map extends Component {
