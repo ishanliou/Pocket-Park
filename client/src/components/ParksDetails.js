@@ -44,10 +44,6 @@ class ParksDetails extends Component {
 
     render() {
 
-        // let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD23dlHvjTPW05PwXkctr9NXp1NktIdSig
-        //            &q=${this.state.parkname}
-        //            &zoom=11`
-
         if(!this.state.park) 
         return <div className="loader"><img src={`/images/tree.png`} className="App-logo" alt="logo" /><h3 className="park-details" >Loading...
                     
